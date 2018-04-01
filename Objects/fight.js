@@ -16,7 +16,7 @@ Fight.prototype.draw = function() {
 };
 
 Fight.prototype.checkCollision = function() {
-  if (this.player1.x + this.player1.width + this.player1.sword.height >= this.player2.x - this.player2.sword.height && this.player1.sword.y === this.player1.sword.y) {
+  if (this.player1.x + this.player1.width + this.player1.sword.height >= this.player2.x - this.player2.sword.height && this.player1.sword.y === this.player2.sword.y) {
     this.player1.x -= 20;
     this.player1.sword.x -= 20;
     this.player2.x += 20;
