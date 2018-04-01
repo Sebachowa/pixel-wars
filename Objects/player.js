@@ -8,7 +8,8 @@ function Player(ctx, x, y, height, width, side) {
   this.width = width;
   this.alive = true;
   this.side = side;
-  this.sword = new Sword(this.ctx, this.x, this.y, this.side)
+  this.sword = new Sword(this.ctx, this.x, this.y, this.side);
+  this.score = 0
 };
 
 Player.prototype.moveRight = function() {
@@ -19,7 +20,7 @@ Player.prototype.moveRight = function() {
 };
 
 Player.prototype.moveLeft = function() {
-  if ( this.x > 20 ) {
+  if (this.x > 20) {
     this.x -= 20;
     this.sword.x -=20;
   };
