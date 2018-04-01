@@ -1,31 +1,5 @@
 'use strict';
 
-
-// var sword = {
-//     x: player.x + 40,
-//     y: player.y + 20,
-//     maxPositionY: player.y + 10,
-//     minPositionY: player.y + 60,
-//     height: 50,
-//     width: 5,
-//     moveSwordDown: function () {
-//       this.y += 10;
-//     },
-//     moveSwordUp: function () {
-//       this.y -= 10;
-//     },
-//     moveRight: function() {
-//       this.x += 20;
-//     },
-//     moveLeft: function() {
-//       this.x -= 20;
-//     },
-//     attack: function() {      
-//       this.x += 30;
-//       this.x -= 30;
-//     }
-//   }
-
 function Sword(ctx, x, y, side) {
   this.ctx = ctx;
   this.x = x;
@@ -36,7 +10,6 @@ function Sword(ctx, x, y, side) {
   this.height = 50;
   this.width = 5;
 };
-
 
 Sword.prototype.moveUp = function() {
   this.y -= 20;

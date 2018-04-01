@@ -12,13 +12,19 @@ function Player(ctx, x, y, height, width, side) {
 };
 
 Player.prototype.moveRight = function() {
-  this.x += 20;
-  this.sword.x += 20;
+  console.log(this.x)
+  console.log(this.ctx.canvas.width)
+  if (this.x + this.width + 20 < this.ctx.canvas.width) {
+    this.x += 20;
+    this.sword.x += 20;
+  };
 };
 
 Player.prototype.moveLeft = function() {
-  this.x -= 20;
-  this.sword.x -=20;
+  if ( this.x > 20 ) {
+    this.x -= 20;
+    this.sword.x -=20;
+  };
 };
 
 Player.prototype.draw = function() {
