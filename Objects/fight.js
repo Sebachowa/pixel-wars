@@ -9,11 +9,14 @@ function Fight(ctx) {
 };
 
 Fight.prototype.draw = function() {
+  var self = this;
   this.background.drawFloor();
   this.player1.draw();
   this.player2.draw();
   this.checkCollision();
-  // requestAnimationFrame(this.draw);
+  requestAnimationFrame(function () {
+    self.draw
+  });
 };
 
 Fight.prototype.checkCollision = function() {

@@ -47,22 +47,26 @@ function main() {
 
   var game;
 
+  // function gameEnded() {
+  //   destroyGameScreen();
+  //   buildGameOverScreen();
+  // };
+
   function gameEnded() {
-    destroyGameScreen();
-    buildGameOverScreen();
+    setTimeout(function() {
+      destroyGameScreen();
+      buildGameOverScreen();
+    }, 1000);
   };
 
   function buildGameScreen() {
     game = new Game(mainContentElement);
-    game.build();
-    game.start();
-    game.onEnded(function() {
-      gameEnded();
-    });
+    gameEnded();
   };
 
   function destroyGameScreen() {
     game.destroy();
+
   };
 
 
