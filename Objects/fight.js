@@ -13,10 +13,16 @@ Fight.prototype.draw = function() {
   this.player1.draw();
   this.player2.draw();
   this.checkCollision();
+  // requestAnimationFrame(this.draw);
 };
 
 Fight.prototype.checkCollision = function() {
-  if (this.player1.x + this.player1.width + this.player1.sword.height >= this.player2.x - this.player2.sword.height && this.player1.sword.y === this.player2.sword.y) {
+  var swordTip1 = this.player1.x + this.player1.width + this.player1.sword.height;
+  var swordTip2 = this.player2.x - this.player2.sword.height;
+  var player1Body = this.player1.x + this.player1.width;
+  var player2Body = this.player2.x;
+
+  if (swordTip1 >= swordTip2 && this.player1.sword.y === this.player2.sword.y) {
     this.player1.x -= 20;
     this.player1.sword.x -= 20;
     this.player2.x += 20;
@@ -26,41 +32,44 @@ Fight.prototype.checkCollision = function() {
 
 Fight.prototype.handleKeyDown = function(e) {
   switch (e.keyCode) {
-    case 37:
+    case 75:
     this.player2.moveLeft();
     break;
-    case 39:
+    case 186:
     this.player2.moveRight();
     break;
-    case 40:
+    case 74:
+    this.player2.attack();
+    break;
+    case 76:
     if (this.player2.sword.y < this.player2.sword.minPositionY) {
       this.player2.sword.moveDown();
-    } else {
-    }
+    };
     break;
-    case 38:
+    case 79:
     if (this.player2.sword.y > this.player2.sword.maxPositionY) {
       this.player2.sword.moveUp();
-    } else {
-    }
+    };
     break;
+
     case 65:
     this.player1.moveLeft();
     break;
     case 68:
     this.player1.moveRight();
     break;
+    case 70:
+    this.player1.attack();
+    break;
     case 83:
     if (this.player1.sword.y < this.player1.sword.minPositionY) {
       this.player1.sword.moveDown();
-    } else {
-    }
+    };
     break;
     case 87:
     if (this.player1.sword.y > this.player1.sword.maxPositionY) {
       this.player1.sword.moveUp();
-    } else {
-    }
+    };
     break;
   };
   this.updateCanvas();

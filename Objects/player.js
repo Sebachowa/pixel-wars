@@ -26,6 +26,20 @@ Player.prototype.moveLeft = function() {
   };
 };
 
+Player.prototype.attack = function() {
+  if (this.side === 'left') {
+    this.x += 20
+    this.sword.x += 50
+    // i should add a delay in here...
+    this.sword.x -= 30;
+  } else if (this.side = 'right') {
+    this.x -= 20;
+    this.sword.x -= 50;
+    // i should add a delay in here...
+    this.sword.x += 30;
+  }
+};
+
 Player.prototype.draw = function() {
   this.ctx.fillRect(this.x, this.y, this.width, this.height);
   this.sword.draw();

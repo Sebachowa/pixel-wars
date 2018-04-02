@@ -1,0 +1,126 @@
+
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- typography ---- */
+
+body {
+  color: #111;
+  background: yellowgreen;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 147%;
+}
+
+h1 {
+  margin: 24px 0 12px;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 18px 0 12px;
+  font-size: 24px;
+}
+
+h1 {
+  margin: 24px 0 12px;
+  font-size: 20px;
+}
+p {
+  margin: 0 0 12px;
+  font-size: 30px;
+}
+
+/* ---- layout ---- */
+
+html,
+body {
+  height: 100%;
+}
+
+#main-content {
+  height: 100%;
+  margin: 0 20px;
+}
+
+/* ---- buttons ---- */
+
+button {
+  padding: 20px 0;
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+/* ---- title screen ---- */
+
+.title-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
+/* ---- game screen ---- */
+
+.game-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.game-screen .header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.game-screen .main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game-screen .number,
+.game-screen .question {
+  flex: 1 0 auto;
+  font-size: 60px;
+}
+
+.game-screen .actions {
+  flex: 2 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  text-transform: capitalize;
+}
+
+.game-screen .footer {
+
+}
+
+/* ---- game over screen ---- */
+
+.game-over-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
