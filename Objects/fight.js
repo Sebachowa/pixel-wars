@@ -10,59 +10,29 @@ function Fight(ctx) {
 
 Fight.prototype.draw = function() {
   var self = this;
+  this.updateCanvas();
   this.background.drawFloor();
+  this.background.drawScores();
   this.player1.draw();
   this.player2.draw();
-  this.checkCollision();
+  // Reset position of the player, after a timeout y
   requestAnimationFrame(function () {
-    self.draw
+    self.draw();
   });
-};
-
-Fight.prototype.checkCollision = function() {
-  var swordTip1 = this.player1.x + this.player1.width + this.player1.sword.height;
-  var swordTip2 = this.player2.x - this.player2.sword.height;
-  var player1Body = this.player1.x + this.player1.width;
-  var player2Body = this.player2.x;
-
-  if (swordTip1 >= swordTip2 && this.player1.sword.y === this.player2.sword.y) {
-    this.player1.x -= 20;
-    this.player1.sword.x -= 20;
-    this.player2.x += 20;
-    this.player2.sword.x += 20;
-  };
 };
 
 Fight.prototype.handleKeyDown = function(e) {
   switch (e.keyCode) {
-    case 75:
-    this.player2.moveLeft();
-    break;
-    case 186:
-    this.player2.moveRight();
-    break;
-    case 74:
-    this.player2.attack();
-    break;
-    case 76:
-    if (this.player2.sword.y < this.player2.sword.minPositionY) {
-      this.player2.sword.moveDown();
-    };
-    break;
-    case 79:
-    if (this.player2.sword.y > this.player2.sword.maxPositionY) {
-      this.player2.sword.moveUp();
-    };
-    break;
 
+    // Player 1 movement - Key binding
     case 65:
-    this.player1.moveLeft();
+    this.player1.moveLeft(this.player1, this.player2);
     break;
     case 68:
-    this.player1.moveRight();
+    this.player1.moveRight(this.player1, this.player2);
     break;
     case 70:
-    this.player1.attack();
+    this.player1.attack(this.player1, this.player2);
     break;
     case 83:
     if (this.player1.sword.y < this.player1.sword.minPositionY) {
@@ -74,11 +44,30 @@ Fight.prototype.handleKeyDown = function(e) {
       this.player1.sword.moveUp();
     };
     break;
+
+    // Player 2 movement - Key binding
+    case 75:
+    this.player2.moveLeft(this.player1, this.player2);
+    break;
+    case 186:
+    this.player2.moveRight(this.player1, this.player2);
+    break;
+    case 74:
+    this.player2.attack(this.player1, this.player2);
+    break;
+    case 76:
+    if (this.player2.sword.y < this.player2.sword.minPositionY) {
+      this.player2.sword.moveDown();
+    };
+    break;
+    case 79:
+    if (this.player2.sword.y > this.player2.sword.maxPositionY) {
+      this.player2.sword.moveUp();
+    };
+    break;
   };
-  this.updateCanvas();
 };
 
 Fight.prototype.updateCanvas = function() {
     this.ctx.clearRect(0, 0, 1000, 800);
-    this.draw();
   };

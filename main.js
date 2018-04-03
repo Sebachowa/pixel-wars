@@ -60,14 +60,13 @@ function main() {
   function startGame() {
     var ctx = document.getElementById("canvas").getContext("2d");
     var fight = new Fight(ctx);
-    
     function handleKeyDown(event) {
       fight.handleKeyDown(event);
     };
-    gameEnded(fight);    
+    // gameEnded(fight);    
     window.addEventListener("keydown", handleKeyDown);
   };
-  
+
   function destroyGameScreen(f) {
     gameScreenElement.remove();
     window.removeEventListener("keydown", f.handleKeyDown);
