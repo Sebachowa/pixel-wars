@@ -45,10 +45,8 @@ function main() {
   var gameScreenElement;
 
   function gameEnded(f) {
-    setTimeout(function() {
-      destroyGameScreen(f);
-      buildGameOverScreen();
-    }, 3000);
+    destroyGameScreen(f);
+    buildGameOverScreen();
   };
 
   function buildGameScreen() {
@@ -58,18 +56,27 @@ function main() {
   };
 
   function startGame() {
-    var ctx = document.getElementById("canvas").getContext("2d");
-    var fight = new Fight(ctx);
+
     function handleKeyDown(event) {
       fight.handleKeyDown(event);
     };
-    // gameEnded(fight);    
-    window.addEventListener("keydown", handleKeyDown);
-  };
 
-  function destroyGameScreen(f) {
+    function handleKeyUp(event) {
+      fight.handleKeyUp(event);
+    };
+
+    var ctx = document.getElementById("canvas").getContext("2d");
+    var fight = new Fight(ctx, gameEnded);    
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+  };
+  
+
+  function destroyGameScreen(fight) {
     gameScreenElement.remove();
-    window.removeEventListener("keydown", f.handleKeyDown);
+    window.removeEventListener("keydown", fight.handleKeyDown);
+    window.removeEventListener("keyup", fight.handleKeyUp);
   };
 
 

@@ -1,14 +1,17 @@
 'use strict';
 
-function Sword(ctx, x, y, side) {
+function Sword(ctx, initialX, initialY, side) {
   this.ctx = ctx;
-  this.x = x;
-  this.y = y;
+  this.x = initialX;
+  this.y = initialY;
+  this.initialX = initialX;
+  this.initialY = initialY;
   this.side = side
   this.maxPositionY = 520;
   this.minPositionY = 560;
   this.height = 50;
   this.width = 5;
+  this.speed = 0;
 };
 
 Sword.prototype.moveUp = function() {

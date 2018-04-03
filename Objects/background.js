@@ -12,10 +12,54 @@ Background.prototype.drawFloor = function() {
 };
 
 Background.prototype.drawScores = function() {
-  this.ctx.fillRect(50, 50, 50, 50);
-  this.ctx.fillRect(150, 50, 50, 50);
-  this.ctx.fillRect(250, 50, 50, 50);
-  this.ctx.fillRect(900, 50, 50, 50);
-  this.ctx.fillRect(800, 50, 50, 50);
-  this.ctx.fillRect(700, 50, 50, 50);
+  _drawCircle(this.ctx, 100, 100);
+  _drawCircle(this.ctx, 200, 100);
+  _drawCircle(this.ctx, 300, 100);
+  _drawCircle(this.ctx, 700, 100);
+  _drawCircle(this.ctx, 800, 100);
+  _drawCircle(this.ctx, 900, 100);
+};
+
+Background.prototype.updateScores = function(player1, player2) {
+  if (player1.score === 1) {
+    _drawColorCircle(this.ctx, 300, 100);
+  } else if (player1.score === 2) {
+    _drawColorCircle(this.ctx, 300, 100);
+    _drawColorCircle(this.ctx, 200, 100);
+  } else if (player1.score === 3) {
+    _drawColorCircle(this.ctx, 300, 100);
+    _drawColorCircle(this.ctx, 200, 100);
+    _drawColorCircle(this.ctx, 100, 100);
+  }
+  if (player2.score === 1) {
+    _drawColorCircle(this.ctx, 700, 100);
+  } else if (player2.score === 2) {
+    _drawColorCircle(this.ctx, 700, 100);
+    _drawColorCircle(this.ctx, 800, 100);
+  } else if (player2.score === 3) {
+    _drawColorCircle(this.ctx, 700, 100);
+    _drawColorCircle(this.ctx, 800, 100);
+    _drawColorCircle(this.ctx, 900, 100);
+  }
+};
+
+// PRIVATE FUNCTIONS
+
+function _drawCircle(ctx, x, y) {
+  ctx.beginPath();
+  ctx.arc(x, y, 30, 0, 2 * Math.PI, false);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "#003300";
+  ctx.stroke();
+};
+
+function _drawColorCircle(ctx, x, y) {
+  ctx.beginPath();
+  ctx.arc(x, y, 30, 0, 2 * Math.PI, false);
+  ctx.fillStyle = "green";
+  ctx.fill();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "#003300";
+  ctx.stroke();
+  ctx.fillStyle = "black";
 };
