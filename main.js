@@ -66,7 +66,7 @@ function main() {
     };
 
     var ctx = document.getElementById("canvas").getContext("2d");
-    var fight = new Fight(ctx, gameEnded);    
+    var fight = new Fight(ctx, gameEnded, handleKeyDown);    
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);

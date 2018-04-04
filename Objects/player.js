@@ -132,7 +132,7 @@ Player.prototype.checkHitPlayer2 = function(opponent) {
   if (swordTip <= BodyOpponent) {
     this.score++;
     opponent.alive = false;
-    window.removeEventListener("keydown", this.callback);
+    window.removeEventListener("keydown", this.callback);  
   };
 };
 

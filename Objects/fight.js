@@ -1,12 +1,12 @@
 'use strict';
 
-function Fight(ctx, callback) {
+function Fight(ctx, callback,keyDownCb) {
   this.ctx = ctx;
   this.background = new Background(this.ctx, 0, 600, 1000, 200);
-  this.player1 = new Player(this.ctx, 100, 520, 80, 40, 'left', callback);
-  this.player2 = new Player(this.ctx, 860, 520, 80, 40, 'right', callback);
-  this.callback = callback;
+  this.player1 = new Player(this.ctx, 100, 520, 80, 40, 'left', keyDownCb);
+  this.player2 = new Player(this.ctx, 860, 520, 80, 40, 'right', keyDownCb);
   this.cb = callback;
+  this.keyDownCb = keyDownCb;
   this.ended = false;
   this.draw();
 };
@@ -21,12 +21,12 @@ Fight.prototype.draw = function() {
   this.background.drawFloor();
   this.player1.draw();
   this.player2.draw();
-  
   this.background.updateScores(this.player1, this.player2);
   if (this.player1.alive === false || this.player2.alive === false) {
     setTimeout(function() {
       self.resetPlayerPosition(self.player1);
       self.resetPlayerPosition(self.player2);
+      window.addEventListener("keydown", self.keyDownCb);  
     }, 1000);
   };
   requestAnimationFrame(function () {
