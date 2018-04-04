@@ -37,6 +37,7 @@ Fight.prototype.doFrame = function() {
   });
 };
 
+
 // checkhit
 // tell playetrs, likre score and shit
 //   disable keys
