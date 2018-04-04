@@ -3,8 +3,8 @@
 function Fight(ctx, callback,keyDownCb) {
   this.ctx = ctx;
   this.background = new Background(this.ctx, 0, 600, 1000, 200);
-  this.player1 = new Player(this.ctx, 100, 520, 80, 40, 'left', keyDownCb);
-  this.player2 = new Player(this.ctx, 860, 520, 80, 40, 'right', keyDownCb);
+  this.player1 = new Player(this.ctx, 100, 500, 80, 40, 'left', keyDownCb);
+  this.player2 = new Player(this.ctx, 860, 500, 80, 40, 'right', keyDownCb);
   this.cb = callback;
   this.keyDownCb = keyDownCb;
   this.ended = false;
@@ -19,6 +19,7 @@ Fight.prototype.doFrame = function() {
   this.player2.update(this.player1);
   this.clearCanvas();
   this.background.drawFloor();
+  this.background.drawBack();
   this.player1.draw();
   this.player2.draw();
   this.background.updateScores(this.player1, this.player2);
@@ -33,7 +34,7 @@ Fight.prototype.doFrame = function() {
   requestAnimationFrame(function () {
     if (!self.ended) {
       self.doFrame();
-    }
+    };
   });
 };
 
@@ -60,8 +61,6 @@ Fight.prototype.resetPlayerPosition = function(player) {
 };
 
 Fight.prototype.handleKeyDown = function(e) {
-  // if disabled keys
-  //   return
   switch (e.keyCode) {
     
     // Player 1 movement - Key binding
@@ -74,6 +73,7 @@ Fight.prototype.handleKeyDown = function(e) {
     this.player1.setDirection('right');
     break;
     case 69:
+
     this.player1.attack(this.player2);
     break;
     case 83:

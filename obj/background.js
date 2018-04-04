@@ -8,8 +8,17 @@ function Background(ctx, x, y, height, width) {
 }
 
 Background.prototype.drawFloor = function() {
-  this.ctx.fillRect(this.x, this.y, this.height, this.width); 
+  // this.ctx.fillRect(this.x, this.y, this.height, this.width); 
+  var img = new Image();
+  img.src = "images/floor.png";
+  this.ctx.drawImage(img, 0, 600);
 };
+
+Background.prototype.drawBack = function() {
+  var img = new Image();
+  img.src = "images/back.png";
+  this.ctx.drawImage(img, -1, 0);
+}
 
 Background.prototype.drawScores = function() {
   _drawCircle(this.ctx, 100, 100);
