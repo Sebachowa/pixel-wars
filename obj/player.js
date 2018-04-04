@@ -89,7 +89,7 @@ Player.prototype.attack = function(opponent) {
 Player.prototype.draw = function() {
   // this.ctx.fillRect(this.x, this.y, this.width, this.height);
   this.drawImage(this.x, this.y, this.width, this.height);
-  this.drawWing(this.x, this.y, this.width, this.height);
+  // this.drawWing(this.x, this.y, this.width, this.height);
   this.sword.draw();
   // this.sword.drawS();
 };
