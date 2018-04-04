@@ -8,11 +8,11 @@ function Fight(ctx, callback,keyDownCb) {
   this.cb = callback;
   this.keyDownCb = keyDownCb;
   this.ended = false;
-  this.draw();
+  this.doFrame();
 };
 
 
-Fight.prototype.draw = function() {
+Fight.prototype.doFrame = function() {
   var self = this;
   this.checkIfEnded(this.cb);
   this.player1.update(this.player2);
@@ -22,19 +22,25 @@ Fight.prototype.draw = function() {
   this.player1.draw();
   this.player2.draw();
   this.background.updateScores(this.player1, this.player2);
+  // this.checkHit
   if (this.player1.alive === false || this.player2.alive === false) {
     setTimeout(function() {
       self.resetPlayerPosition(self.player1);
       self.resetPlayerPosition(self.player2);
-      window.addEventListener("keydown", self.keyDownCb);  
+      window.addEventListener("keydown", self.keyDownCb);
     }, 1000);
   };
   requestAnimationFrame(function () {
     if (!self.ended) {
-      self.draw();
+      self.doFrame();
     }
   });
 };
+
+// checkhit
+// tell playetrs, likre score and shit
+//   disable keys
+
 
 Fight.prototype.checkIfEnded = function(cb) {
   if (this.player1.score === 3 || this.player2.score === 3) {
@@ -53,6 +59,8 @@ Fight.prototype.resetPlayerPosition = function(player) {
 };
 
 Fight.prototype.handleKeyDown = function(e) {
+  // if disabled keys
+  //   return
   switch (e.keyCode) {
     
     // Player 1 movement - Key binding

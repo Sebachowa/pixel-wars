@@ -116,6 +116,10 @@ Player.prototype.checkCollisionPlayer2 = function(opponent) {
   };
 };
 
+// youreHit()
+
+// youHitHheOrherOne()
+
 Player.prototype.checkHitPlayer1 = function(opponent) {
   var swordTip = this.sword.x + this.width + this.sword.height;
   var BodyOpponent = opponent.x;
