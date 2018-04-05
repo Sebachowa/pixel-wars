@@ -60,7 +60,6 @@ Fight.prototype.resetPlayerPosition = function(player) {
 
 Fight.prototype.handleKeyDown = function(e) {
   switch (e.keyCode) {
-    
     // Player 1 movement - Key binding
     case 65:
     this.player1.setSpeed(5);
@@ -84,7 +83,6 @@ Fight.prototype.handleKeyDown = function(e) {
       this.player1.sword.moveUp();
     };
     break;
-    
     // Player 2 movement - Key binding
     case 75:
     this.player2.setSpeed(5);
@@ -112,7 +110,6 @@ Fight.prototype.handleKeyDown = function(e) {
 
 Fight.prototype.handleKeyUp = function(e) {
   switch (e.keyCode) {
-    
     // Player 1 movement - Key binding
     case 65:
     this.player1.setSpeed(0);
@@ -122,7 +119,6 @@ Fight.prototype.handleKeyUp = function(e) {
     this.player1.setSpeed(0);
     this.player1.setDirection('right');
     break;
-    
     // Player 2 movement - Key binding
     case 75:
     this.player2.setSpeed(0);
@@ -138,12 +134,3 @@ Fight.prototype.handleKeyUp = function(e) {
 Fight.prototype.clearCanvas = function() {
   this.ctx.clearRect(0, 0, 1000, 800);
 };
-
-// PRIVATE METHOD
-  setTimeout(function() {
-    if (self.side === "left") {
-      self.sword.x -= 50;
-    } else if (self.side === "right") {
-      self.sword.x += 50;
-    }
-  }, 150);

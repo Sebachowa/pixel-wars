@@ -1,4 +1,4 @@
-/* ---- reset ---- */
+/* ---- RESET ---- */
 
 html {
   box-sizing: border-box;
@@ -13,7 +13,7 @@ body {
   padding: 0;
 }
 
-/* ---- typography ---- */
+/* ---- TYPOGRAPHY ---- */
 
 body {
   color: #111;
@@ -21,7 +21,7 @@ body {
   font-size: 16px;
 }
 
-/* ---- layout ---- */
+/* ---- LAYOUT ---- */
 
 .container {
   width: 100%;
@@ -37,7 +37,9 @@ canvas {
   border: 1px solid black;
 }
 
-/* ---- splash-screen ---- */
+
+/* ---- SPLASH SCREEN ---- */
+
 #splash-screen {
   width: 1000px;
   height: 800px;
@@ -51,6 +53,9 @@ canvas {
   align-items: center;
   border: 1px solid black;
 }
+
+
+/* ---- INSTRUCTIONS SCREEN ---- */
 
 #instructions-screen {
   width: 1000px;
@@ -69,6 +74,9 @@ canvas {
 #logo {
   width: 500px;
 }
+
+
+/* ---- INSTRUCTIONS SCREEN ---- */
 
 #game-over-screen {
   width: 1000px;
@@ -94,29 +102,6 @@ canvas {
   align-items: center;
 }
 
-button {
-  background-color: #174176;
-  padding: 15px 30px;
-  font-size: 20px;
-  border-radius: 8px;
-  border: 2px solid white;
-  cursor: pointer;
-  color: white;
-  box-shadow: 1px 1px 1px black;
-  font-family: 'Share Tech Mono', monospace;
-}
-
-.btn-holder {
-  width: 500px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-button:hover  {
-  box-shadow: initial;
-}
-
 .controls {
   width: 300px;
 }
@@ -124,6 +109,9 @@ button:hover  {
 .logo-controls {
   width: 300px;
 }
+
+
+/* ---- WINNER SCREEN ---- */
 
 #winner-screen {
   width: 100%;
@@ -141,6 +129,9 @@ button:hover  {
   color: white;
   text-shadow: 1px 1px 1px black;
 }
+
+
+/* ---- CREDITS SCREEN ---- */
 
 #credits-screen {
   width: 1000px;
@@ -164,4 +155,30 @@ button:hover  {
   font-size: 20px;
   color: black;
   text-decoration: none;
+}
+
+
+/* ---- COMPONENTS ---- */
+
+button {
+  background-color: #174176;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+  border: 2px solid white;
+  cursor: pointer;
+  color: white;
+  box-shadow: 1px 1px 1px black;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.btn-holder {
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button:hover  {
+  box-shadow: initial;
 }

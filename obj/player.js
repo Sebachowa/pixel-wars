@@ -77,16 +77,14 @@ Player.prototype.attack = function(opponent) {
   if (this.side === 'left') {
     this.x += 20;
     this.sword.x += 80;
-    var audio = new Audio("sounds/attack.wav");
-    audio.play();
+    _playAudio("sounds/attack.wav");
     this.checkCollisionPlayer1(opponent);
     this.checkHitPlayer1(opponent);
     this.actionDelay();
   } else if (this.side === 'right') {
     this.x -= 20;
     this.sword.x -= 80;
-    var audio = new Audio("sounds/attack.wav");
-    audio.play();
+    _playAudio("sounds/attack.wav");
     this.checkCollisionPlayer2(opponent);
     this.checkHitPlayer2(opponent);
     this.actionDelay();
@@ -109,23 +107,17 @@ Player.prototype.drawCharacter = function(x, y, width, height) {
   var playerWidth = 66;
   var playerHeight = 106; 
   if (this.side === "left") {
-    var img = new Image();
-    img.src = "images/player-one.png";
-    this.ctx.drawImage(img, 0, 0, frameWidth, frameHeight, playerX, playerY, playerWidth, playerHeight);
+    this.ctx.drawImage(_loadImage("images/player-one.png"), 0, 0, frameWidth, frameHeight, playerX, playerY, playerWidth, playerHeight);
   } else if (this.side === "right") {
-    var img = new Image();
-    img.src = "images/player-two.png";
-    this.ctx.drawImage(img, 0, 0, frameWidth, frameHeight, playerX, playerY, playerWidth, playerHeight);
+    this.ctx.drawImage(_loadImage("images/player-two.png"), 0, 0, frameWidth, frameHeight, playerX, playerY, playerWidth, playerHeight);
   };
 };
 
 Player.prototype.drawCharacterEnergy = function () {
   if (this.side === "left") {
-    var img = new Image();
-    img.src = "images/energy-one.png";
+    var img = _loadImage("images/energy-one.png");
   } else if (this.side === "right") {
-    var img = new Image();
-    img.src = "images/energy-two.png";
+    var img = _loadImage("images/energy-two.png");
   };
   var cutPosition = this.levitationAnimationFrame * 90;
   if (this.levitationAnimationFrame === 10) {
@@ -137,13 +129,11 @@ Player.prototype.drawCharacterEnergy = function () {
 
 Player.prototype.drawSwordEnergy = function() {
   if (this.side === "left") {
-    var img = new Image();
-    img.src = "images/sword-energy-one.png";
+    var img = _loadImage("images/sword-energy-one.png");
     var x = this.sword.x + 55;
     var y = this.sword.y + 18;
   } else if (this.side === "right") {
-    var img = new Image();
-    img.src = "images/sword-energy-two.png";
+    var img = _loadImage("images/sword-energy-two.png");
     var x = this.sword.x - 85;
     var y = this.sword.y + 18;
   };
@@ -156,19 +146,19 @@ Player.prototype.drawSwordEnergy = function() {
 };
 
 Player.prototype.drawFloorSmoke = function () {
-  var img = new Image();
-  img.src = "images/floor-smoke.png";
   var playerX = this.x - 30;
   var playerY = this.y + 65;
   var cutPosition = this.floorSmokeAnimationFrame * 100;
   if (this.floorSmokeAnimationFrame === 11) {
     this.floorSmokeAnimationFrame = 0;
   };
-  this.ctx.drawImage(img, cutPosition, 0, 100, 50, playerX, playerY, 100, 50);
+  this.ctx.drawImage(_loadImage("images/floor-smoke.png"), cutPosition, 0, 100, 50, playerX, playerY, 100, 50);
   this.floorSmokeAnimationFrame++;
 };
 
-// PRIVATE METHODS
+
+// ---------- PRIVATE METHODS ----------
+
 Player.prototype.checkCollisionPlayer1 = function(opponent) {
 
   var swordTip = this.sword.x + this.width + this.sword.height - 25;
@@ -219,8 +209,6 @@ Player.prototype.checkHitPlayer2 = function(opponent) {
     window.removeEventListener("keydown", this.callback);  
   };
 };
-
-//HELPER FUNCTION (otra archivo utilities.js OOP armar object utilities)
 
 Player.prototype.actionDelay = function() {
   var self = this;
