@@ -11,64 +11,55 @@ Background.prototype.drawFloor = function() {
   // this.ctx.fillRect(this.x, this.y, this.height, this.width); 
   var img = new Image();
   img.src = "images/floor.png";
-  this.ctx.drawImage(img, 0, 600);
+  this.ctx.drawImage(img, -2, 595);
 };
 
 Background.prototype.drawBack = function() {
   var img = new Image();
-  img.src = "images/back.png";
+  img.src = "images/back-new.png";
   this.ctx.drawImage(img, -1, 0);
 }
 
 Background.prototype.drawScores = function() {
-  _drawCircle(this.ctx, 100, 100);
-  _drawCircle(this.ctx, 200, 100);
-  _drawCircle(this.ctx, 300, 100);
-  _drawCircle(this.ctx, 700, 100);
-  _drawCircle(this.ctx, 800, 100);
-  _drawCircle(this.ctx, 900, 100);
+  this.lightTurnedOff(this.ctx, 76, 100);
+  this.lightTurnedOff(this.ctx, 188, 100);
+  this.lightTurnedOff(this.ctx, 300, 100);
+  this.lightTurnedOff(this.ctx, 650, 100);
+  this.lightTurnedOff(this.ctx, 762, 100);
+  this.lightTurnedOff(this.ctx, 874, 100);
 };
 
 Background.prototype.updateScores = function(player1, player2) {
   if (player1.score === 1) {
-    _drawColorCircle(this.ctx, 300, 100);
+    this.lightTurnedOn(this.ctx, 300, 100);
   } else if (player1.score === 2) {
-    _drawColorCircle(this.ctx, 300, 100);
-    _drawColorCircle(this.ctx, 200, 100);
+    this.lightTurnedOn(this.ctx, 300, 100);
+    this.lightTurnedOn(this.ctx, 188, 100);
   } else if (player1.score === 3) {
-    _drawColorCircle(this.ctx, 300, 100);
-    _drawColorCircle(this.ctx, 200, 100);
-    _drawColorCircle(this.ctx, 100, 100);
+    this.lightTurnedOn(this.ctx, 300, 100);
+    this.lightTurnedOn(this.ctx, 188, 100);
+    this.lightTurnedOn(this.ctx, 76, 100);
   }
   if (player2.score === 1) {
-    _drawColorCircle(this.ctx, 700, 100);
+    this.lightTurnedOn(this.ctx, 650, 100);
   } else if (player2.score === 2) {
-    _drawColorCircle(this.ctx, 700, 100);
-    _drawColorCircle(this.ctx, 800, 100);
+    this.lightTurnedOn(this.ctx, 650, 100);
+    this.lightTurnedOn(this.ctx, 762, 100);
   } else if (player2.score === 3) {
-    _drawColorCircle(this.ctx, 700, 100);
-    _drawColorCircle(this.ctx, 800, 100);
-    _drawColorCircle(this.ctx, 900, 100);
+    this.lightTurnedOn(this.ctx, 650, 100);
+    this.lightTurnedOn(this.ctx, 762, 100);
+    this.lightTurnedOn(this.ctx, 874, 100);
   }
 };
 
-// PRIVATE FUNCTIONS
-
-function _drawCircle(ctx, x, y) {
-  ctx.beginPath();
-  ctx.arc(x, y, 30, 0, 2 * Math.PI, false);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "#003300";
-  ctx.stroke();
+Background.prototype.lightTurnedOff = function(ctx, x, y) {
+  var img = new Image();
+  img.src = "images/light-turn-off.png";
+  this.ctx.drawImage(img, x, y);
 };
 
-function _drawColorCircle(ctx, x, y) {
-  ctx.beginPath();
-  ctx.arc(x, y, 30, 0, 2 * Math.PI, false);
-  ctx.fillStyle = "green";
-  ctx.fill();
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "#003300";
-  ctx.stroke();
-  ctx.fillStyle = "black";
-};
+Background.prototype.lightTurnedOn = function(ctx, x, y) {
+  var img = new Image();
+  img.src = "images/light-turn-on.png";
+  this.ctx.drawImage(img, x, y);
+}

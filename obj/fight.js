@@ -8,9 +8,9 @@ function Fight(ctx, callback,keyDownCb) {
   this.cb = callback;
   this.keyDownCb = keyDownCb;
   this.ended = false;
+  this.winner = null;
   this.doFrame();
 };
-
 
 Fight.prototype.doFrame = function() {
   var self = this;
@@ -20,10 +20,10 @@ Fight.prototype.doFrame = function() {
   this.clearCanvas();
   this.background.drawFloor();
   this.background.drawBack();
+  this.background.drawScores();
   this.player1.draw();
   this.player2.draw();
   this.background.updateScores(this.player1, this.player2);
-  // this.checkHit
   if (this.player1.alive === false || this.player2.alive === false) {
     setTimeout(function() {
       self.resetPlayerPosition(self.player1);
@@ -38,19 +38,17 @@ Fight.prototype.doFrame = function() {
   });
 };
 
-
-// checkhit
-// tell playetrs, likre score and shit
-//   disable keys
-
-
 Fight.prototype.checkIfEnded = function(cb) {
   if (this.player1.score === 3 || this.player2.score === 3) {
+    if (this.player1.score === 3) {
+      this.winner = "ONE";
+    } else if (this.player2.score === 3) {
+      this.winner = "TWO";
+    };
     this.ended = true;
     cb(this);
   };
 };
-
 
 Fight.prototype.resetPlayerPosition = function(player) {
   player.alive = true;
