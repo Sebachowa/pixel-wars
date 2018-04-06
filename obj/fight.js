@@ -41,9 +41,9 @@ Fight.prototype.doFrame = function() {
 Fight.prototype.checkIfEnded = function(cb) {
   if (this.player1.score === 3 || this.player2.score === 3) {
     if (this.player1.score === 3) {
-      this.winner = "ONE";
+      this.winner = "1";
     } else if (this.player2.score === 3) {
-      this.winner = "TWO";
+      this.winner = "2";
     };
     this.ended = true;
     cb(this);

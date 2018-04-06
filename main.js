@@ -68,7 +68,7 @@ function main() {
         <img class="controls" src="images/controls-two.png">
       </div>
       <div class="btn-holder">
-        <button class="btn-back">Back!</button>
+        <button class="btn-back">Back</button>
       </div>
       <audio src="sounds/main.ogg" autoplay></audio>
     </div>`);
